@@ -4,9 +4,18 @@ import { AppService } from './app.service';
 import { AdminModule } from './admin/admin.module';
 import { SupplierModule } from './supplier/supplier.module';
 import { AuthModule } from './auth/auth.module';
+import { MongooseModule } from '@nestjs/mongoose';
+import { MongooseConfigService } from './shared/db/mongodb';
 
 @Module({
-  imports: [AdminModule, SupplierModule, AuthModule],
+  imports: [
+    MongooseModule.forRootAsync({
+      useClass: MongooseConfigService,
+    }),
+    AdminModule,
+    SupplierModule,
+    AuthModule,
+  ],
   controllers: [AppController],
   providers: [AppService],
 })

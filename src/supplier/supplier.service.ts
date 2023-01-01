@@ -23,4 +23,6 @@ export class SupplierService {
   remove(id: number) {
     return `This action removes a #${id} supplier`;
   }
+
+  getAllEligibleSubscribers() {}
 }
